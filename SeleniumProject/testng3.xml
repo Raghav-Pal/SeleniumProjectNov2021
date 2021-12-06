@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<test thread-count="5" name="Test">
+
+		<groups>
+			<define name="MyCustomGroup">
+			<!-- comments abcd -->
+				<include name="([A-Za-z]*).sanity"></include>
+			</define>
+			
+			<define name="RegGroup">
+				<include name="regression"></include>
+			</define>
+			<define name="SmokeGroup">
+				<include name="smoke"></include>
+			</define>
+			<define name="SanityGroup">
+				<include name="sanity"></include>
+			</define>
+			<define name="Sanity+SmokeGroup">
+				<include name="sanity"></include>
+				<include name="smoke"></include>
+			</define>
+
+			<run>
+				<include name="Sanity+SmokeGroup"></include>
+			</run>
+		</groups>
+
+		<classes>
+			<class name="demo.TestNGGroupingDemo" />
+		</classes>
+	</test>
+</suite>
